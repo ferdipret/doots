@@ -1,0 +1,85 @@
+!-------------------------------------------
+! XFT Settings gre
+
+Xft.antialias:  true 
+Xft.autohint:   false 
+Xft.dpi:        96
+Xft.hinting:    true 
+Xft.hintstyle:  hintfull 
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+!-------------------------------------------
+! URXVT - Settings
+
+URxvt*depth:                        32
+URxvt*internalBorder:               3
+URxvt*dynamicColors:                on
+URxvt*urgentOnBell:                 true
+URxvt*scrollBar:                    false
+URxvt*underlineURLs:                true
+
+URxvt*font: xft:PragmataPro:size=9
+
+!--------------------------------------------
+! General Colors
+*.background:                     #101218
+*.foreground:                     #d1d4e0
+*.cursorColor:                    #d1d4e0
+
+*.scrollColor:                    #d1d4e0
+*.highlightColor:                 #252936
+*.highlightTextColor:             #C0C5CE
+
+*.color0:                         #101218
+*.color1:                         #ee829f
+*.color2:                         #a5ffe1
+*.color3:                         #ffefcc
+*.color4:                         #97bbf7
+*.color5:                         #c0b7f9
+*.color6:                         #97e0ff
+*.color7:                         #d1d4e0
+*.color8:                         #7780a1
+*.color9:                         #ee829f
+*.color10:                        #a5ffe1
+*.color11:                        #ffefcc
+*.color12:                        #97bbf7
+*.color13:                        #c0b7f9
+*.color14:                        #97e0ff
+*.color15:                        #ffffff
+
+*.color16:                        #f99170
+*.color17:                        #fcc09e
+*.color18:                        #1f222d
+*.color19:                        #252936
+*.color20:                        #C0C5CE
+*.color21:                        #C9CCDB
+
+!-------------------------------------------
+! Man pages colors
+
+*VT100.colorBDMode:                  true
+*VT100.colorBD:                      red
+*VT100.colorULMode:                  true
+*VT100.colorUL:                      cyan   
+*VT100.veryBoldColors:               6
+
+!-------------------------------------------
+! xclock
+
+xclock*majorColor:                  #9a875f
+xclock*minorColor:                  #9a875f
+xclock*minuteColor:                 #9a875f
+xclock*hourColor:                   #9a875f
+xclock*secondColor:                 #9a875f
+
+!-------------------------------------------
+! rofi
+
+rofi.lines:                         2
+rofi.color-enabled:                 true
+rofi.separator-style:               none 
+rofi.width:                         33
+rofi.line-padding:                  6
+rofi.hide-scrollbar:                True
+rofi.columns:                       2
