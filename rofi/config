@@ -1,0 +1,18 @@
+! General
+rofi.font: PragmataPro 12
+rofi.hide-scrollbar:      true
+
+! Layout
+rofi.width:              600
+rofi.lines:              10
+rofi.padding:            50
+rofi.sidebar-mode:       false
+rofi.fullscreen:         false
+
+! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
+rofi.color-normal: #101218, #a5ffe1, #101218, #a5ffe1, #101218
+rofi.color-urgent: #101218, #ee829f, #101218, #ee829f, #101218
+rofi.color-active: #101218, #97bbf7, #101218, #97bbf7, #101218
+!                  'bg',    'border'
+rofi.color-window: #101218, #101218
+

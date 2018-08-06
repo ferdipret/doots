@@ -1,0 +1,261 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = ${xrdb:background}
+background-alt = ${xrdb:highlightColor}
+background-inactive = #12a5ffe1
+foreground = ${xrdb:foreground}
+foreground-alt = ${xrdb:highlightTextColor}
+primary = ${xrdb:color2}
+secondary = ${xrdb:color5}
+alert = ${xrdb:color1}
+color0 = ${xrdb:color0}
+color1 = ${xrdb:color1}
+color2 = ${xrdb:color2}
+color3 = ${xrdb:color3}
+color4 = ${xrdb:color4}
+color5 = ${xrdb:color5}
+color6 = ${xrdb:color6}
+color7 = ${xrdb:color7}
+
+[margin]
+bar-left = 20
+bar-right = 20
+module-margin-left = 1
+module-margin-right = 1
+
+[padding]
+padding-left = 2
+padding-right = 2
+workspace = 1
+
+[bar/left]
+include-file = $HOME/.config/polybar/bar
+
+modules-left = lock
+modules-center = date
+modules-right = suspend
+
+[bar/right]
+include-file = $HOME/.config/polybar/bar
+
+modules-left = volume previous playpause next
+modules-center = spotify
+modules-right = filesystem memory cpu
+
+[bar/bottomleft]
+include-file = $HOME/.config/polybar/bar
+
+modules-left =
+modules-center = i3
+modules-right =
+
+bottom = true
+
+[bar/bottomright]
+include-file = $HOME/.config/polybar/bar
+
+modules-left =
+modules-center = i3
+modules-right =
+
+bottom = true
+
+tray-position = right
+
+[module/spotify]
+type = custom/script
+
+exec = python $HOME/.config/polybar/spotify.py
+interval = 5
+
+format = <label>
+format-prefix = " "
+label = %output:0:500:...%
+format-background = ${colors.background}
+format-foreground = ${colors.primary}
+
+[module/filesystem]
+type = internal/fs
+interval = 10
+
+mount-0 = /home
+
+label-mounted =  %free% Free
+label-unmounted = %mountpoint% not mounted
+label-mounted-foreground = ${colors.primary}
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-foreground = ${colors.secondary}
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.primary}
+label-focused-underline = ${colors.primary}
+label-focused-padding = ${padding.workspace}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused-foreground = ${colors.secondary}
+label-unfocused-underline = ${colors.secondary}
+label-unfocused-padding = ${padding.workspace}
+
+; visible = Active workspace on unfocused monitor
+label-visible-background = ${self.label-focused-background}
+label-visible-foreground = ${colors.primary}
+label-visible-padding = ${padding.workspace}
+label-visible-underline = ${colors.primary}
+
+; urgent = Workspace with urgency hint set
+label-urgent-foreground = ${colors.alert}
+label-urgent-background = ${colors.background}
+label-urgent-underline = ${colors.alert}
+label-urgent-padding = ${padding.workspace}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "|  "
+format-prefix-foreground = ${colors.primary}
+label = %percentage:2%%
+label-foreground = ${colors.primary}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "|  "
+format-prefix-foreground = ${colors.primary}
+label = %percentage_used%%
+label-foreground = ${colors.primary}
+
+[module/lock]
+type = custom/script
+exec = echo 
+format = <label>
+format-foreground = ${colors.primary}
+click-left = betterlockscreen --lock dimblur
+
+[module/suspend]
+type = custom/script
+exec = echo 
+format = <label>
+format-foreground = ${colors.primary}
+click-left = betterlockscreen --suspend dimblur
+
+[module/date]
+type = internal/date
+interval = 5
+date = " %a %d %b  "
+date-alt = " %d-%m"
+time = "  %H:%M,"
+time-alt = %H:%M
+format-prefix = "--------[ "
+format-prefix-foreground = ${colors.primary}
+format-suffix = " ]--------"
+format-suffix-foreground = ${colors.primary}
+format-foreground = ${colors.secondary}
+format-background = ${colors.background}
+label = %time% %date%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <bar-volume>
+label-volume-foreground = ${colors.primary}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-foreground = ${colors.primary}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.alert}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.color6}
+bar-volume-foreground-1 = ${colors.color6}
+bar-volume-foreground-2 = ${colors.color2}
+bar-volume-foreground-3 = ${colors.color2}
+bar-volume-foreground-4 = ${colors.color3}
+bar-volume-foreground-5 = ${colors.color3}
+bar-volume-foreground-6 = ${colors.color1}
+bar-volume-gradient = false
+bar-volume-indicator = %{F#c0b7f9}█%{F-}
+bar-volume-indicator-font = 2
+bar-volume-fill = █
+bar-volume-fill-font = 2
+bar-volume-empty = ░
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/playpause]
+type = custom/script
+exec = python3 $HOME/.config/polybar/PlayPause.py
+interval = 1
+format = <label>
+format-foreground = ${colors.primary}
+click-left = playerctl play-pause
+
+[module/next]
+type = custom/script
+exec = echo 
+format = <label>
+format-foreground = ${colors.primary}
+click-left = playerctl next
+
+[module/previous]
+type = custom/script
+exec = echo 
+format = <label>
+format-foreground = ${colors.primary}
+click-left = playerctl previous
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+
+[global/wm]

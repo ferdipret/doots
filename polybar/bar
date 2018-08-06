@@ -1,0 +1,32 @@
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-color = #00000000
+border-left = ${margin.bar-left}
+border-right = ${margin.bar-right}
+
+
+padding-left = ${padding.padding-left}
+padding-right = ${padding.padding-right}
+
+module-margin-left = ${margin.module-margin-left}
+module-margin-right = ${margin.module-margin-right}
+
+font-0 = PragmataPro:pixelsize=10;1
+font-1 = PragmataPro:fontformat=truetype:size=8:antialias=false;0
+font-2 = PragmataPro:pixelsize=10;1
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+
